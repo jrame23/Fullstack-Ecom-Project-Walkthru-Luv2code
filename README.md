@@ -1,3 +1,20 @@
+# Full-Stack E-Commerce App (Code-Along from Luv2Code)
+
+This repository contains code I wrote while following the
+**"Full Stack: Angular and Java Spring Boot E-Commerce Website"** course by **Luv2Code**.
+
+> 📚 This project was built as a learning exercise and is based on the original course hosted on Udemy.  
+> I do not claim original authorship of the app design or structure — all credit goes to Luv2Code.
+
+## Technologies Used
+- Frontend: Angular
+- Backend: Spring Boot
+
+
+
+
+
+
 # AngularEcommerce
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.0.
