@@ -9,7 +9,12 @@ import { AppRoutingModule } from './app-routing-module';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductCategoryMenu } from './components/product-category-menu/product-category-menu';
 import { Search } from './components/search/search';
+import { ProductDetails } from './components/product-details/product-details';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 const routes: Routes = [
+  {path: 'products/:id', component: ProductDetails},
   {path: 'search/:keyword', component: ProductList},
   {path: 'category/:id', component: ProductList},
   {path: 'category', component: ProductList},
@@ -22,12 +27,14 @@ const routes: Routes = [
     App,
     ProductList,
     ProductCategoryMenu,
-    Search
+    Search,
+    ProductDetails
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [provideHttpClient()],
   bootstrap: [App]
