@@ -16,7 +16,15 @@ export class ProductList implements OnInit{
 
   currentCategoryId: number = 1;
 
+  previousCategoryId: number = 1;
+
   searchMode: boolean = false;
+
+  // properties for pagination
+  thePageNumber: number = 1;
+  thePageSize: number = 5;
+  theTotalElements: number = 0;
+  
 
   constructor(private productService: ProductService,
               private route: ActivatedRoute,
@@ -65,12 +73,33 @@ export class ProductList implements OnInit{
       // no category id available ... default to 1
       this.currentCategoryId = 1;
     }
+
+    //
+    //check if we have a different category id than previous
+    //
+    // if we have a different category id than previous
+    // then set thePageNumber back to 1
+    if (this.previousCategoryId !== this.currentCategoryId) {
+      this.thePageNumber = 1;
+    }
+
+    this.previousCategoryId = this.currentCategoryId;
+
+    console.log(`currentCategoryId=${this.currentCategoryId}, previousCategoryId=${this.previousCategoryId}, thePageNumber=${this.thePageNumber}`);
+
       //now get the products for the given category id
-    this.productService.getProductList(this.currentCategoryId).subscribe(
-      data => {
-        this.products = data;
-      },
-    )
+    this.productService.getProductListPaginate( this.thePageNumber - 1,
+                                                this.thePageSize,
+                                                this.currentCategoryId)
+                                                .subscribe(
+                                                data => {
+                                                  this.products = data._embedded.products;
+                                                  this.thePageNumber = data.page.number + 1; // +1 because page numbers are zero-based
+                                                  this.thePageSize = data.page.size;
+                                                  this.theTotalElements = data.page.totalElements;
+                                                }
+                                                );
+    
   }
 
 }

@@ -49,12 +49,38 @@
 
           <!-- If the product searched for is not found, display a message -->
 
-
           <div *ngIf="products?.length == 0" class="alert alert-warning col-md-12" role="alert">
             <strong>Sorry!</strong> No products found matching your search criteria.
           </div>
 
         </div>
+
+        <!-- Begin footer -->
+
+        <div class="footer pagination">
+          <div class="row">
+            <div class="col-md-6"></div>
+
+            <div class="col-md6">
+              <div class="row">
+                <div class="col-md-9" style="padding-left: 30%">
+
+                  <ngb-pagination  [(page)]="thePageNumber"
+                                   [pageSize]="thePageSize"
+                                   [collectionSize]="theTotalElements"
+                                   (pageChange)="listProducts()">
+
+                  </ngb-pagination>
+                </div>
+              </div>
+            </div>
+
+              
+            </div>
+        </div>
+
+        <!-- End footer -->
+
       </div>
     </div>
   </div>
