@@ -40,6 +40,21 @@ export class CartDetails implements OnInit {
     this.cartService.computeCartTotals();
   }
 
+  //add button click handler
+  incrementQuantity(theCartItem: CartItem) {
+    this.cartService.addToCart(theCartItem);
+  }
+
+  //subtract button click handler
+  decrementQuantity(theCartItem: CartItem) {
+    this.cartService.decrementItemQuantity(theCartItem);
+  }
+
+  //remove button click handler
+  removeAllFromCart(theCartItem: CartItem) {
+    this.cartService.removeFromCart(theCartItem);
+  }
+
   // Additional methods and properties can be added as needed
 
 }
